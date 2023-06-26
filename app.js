@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const passport = require('passport')
+require('dotenv').config()
 // const bootstrap = require('bootstrap');
 
 // const indexRouter = require('./routes/index');
@@ -20,7 +21,7 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, '/view'));
 app.set('view engine', 'hbs');
-
+app.use(cors({origin:'*'}))
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -42,7 +43,7 @@ app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback', passport.authenticate('facebook', {
    successRedirect: '/account',
-   failureRedirect: '/login' 
+   failureRedirect: '/login'
   }));
 app.use('/users', usersRouter);
 

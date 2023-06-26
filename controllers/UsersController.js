@@ -140,5 +140,4 @@ exports.uploads = (req, res) => {
         file: req.file,
         user: req.user
     })
-    
 }
