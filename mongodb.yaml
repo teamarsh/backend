@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodejs-deployment
+  name: mongodb-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nodejs
+      app: mongodb
   template:
     metadata:
       labels:
-        app: nodejs
+        app: mongodb
     spec:
       containers:
-      - name: nodejs
-        image: shtajiryan/nodeback:latest
+      - name: mongodb
+        image: mongo:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 27017
