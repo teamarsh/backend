@@ -19,8 +19,9 @@ const app = express();
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+
 app.use(cors({origin:'*'}))
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -46,7 +47,9 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', {
    failureRedirect: '/login'
   }));
 app.use('/users', usersRouter);
-
+app.get('/', (req, res) => {
+  res.render('index');
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
