@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: nodejs
-        image: localhost:5000/node-back
+        image: shtajiryan/node-back
         ports:
-        - containerPort: 80
+        - containerPort: 8080
